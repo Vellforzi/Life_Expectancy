@@ -24,17 +24,17 @@ print(df.head())
 print(f'-' * 200)
 
 # plot histogram of GDP
-plt.figure(figsize=(8, 6))
-sns.histplot(df.GDP)
-plt.xlabel("GDP in Trillions of U.S. Dollars")
+# plt.figure(figsize=(8, 6))
+# sns.histplot(df.GDP)
+# plt.xlabel("GDP in Trillions of U.S. Dollars")
 # plt.show()
 # Very right skewed where most of the values are on the left-hand side.
 # This type of distribution could be described as a power law distribution
 
 # plot histogram of LEABY
-plt.figure(figsize=(8, 6))
-sns.histplot(df.LEABY)
-plt.xlabel("Life expectancy at birth (years)")
+# plt.figure(figsize=(8, 6))
+# sns.histplot(df.LEABY)
+# plt.xlabel("Life expectancy at birth (years)")
 # plt.show()
 # Very left skewed where most of the values are on the right-hand side.
 # This is almost the opposite of what was observed in the GDP column.
@@ -46,17 +46,17 @@ print(df_Means)
 print(f'-' * 200)
 
 # let's plot bar plots to show the mean values for LEABY variable
-plt.figure(figsize=(8, 6))
-sns.barplot(x="LEABY", y="Country", data=df_Means)
-plt.xlabel("Life expectancy at birth (years)")
+# plt.figure(figsize=(8, 6))
+# sns.barplot(x="LEABY", y="Country", data=df_Means)
+# plt.xlabel("Life expectancy at birth (years)")
 # plt.show()
 # All of the countries except for Zimbabwe have values in the mid-to-high 70s. That's why (probably) LEABY distribution
 # is skewed.
 
 # let's plot bar plots to show the mean values for GDP variable
-plt.figure(figsize=(8, 6))
-sns.barplot(x="GDP", y="Country", data=df_Means)
-plt.xlabel("GDP in Trillions of U.S. Dollars")
+# plt.figure(figsize=(8, 6))
+# sns.barplot(x="GDP", y="Country", data=df_Means)
+# plt.xlabel("GDP in Trillions of U.S. Dollars")
 # plt.show()
 # US has a much higher value compared to the rest of the countries. Zimbabwe is not even visible. Chile is just barely
 # seen. China, Germany and Mexico seem to be relatively close.
@@ -80,44 +80,71 @@ plt.xlabel("GDP in Trillions of U.S. Dollars")
 # plt.show()
 
 # communicate violin and swarm plots
-fig, axes = plt.subplots(1, 2, sharey=True, figsize=(15, 5))
-axes[0] = sns.violinplot(ax=axes[0], x=df.GDP, y=df.Country, color="black")
-axes[0] = sns.swarmplot(ax=axes[0], x=df.GDP, y=df.Country)
-axes[0].set_xlabel("GDP in Trillions of U.S. Dollars")
-axes[1] = sns.violinplot(ax=axes[1], x=df.LEABY, y=df.Country, color="black")
-axes[1] = sns.swarmplot(ax=axes[1], x=df.LEABY, y=df.Country)
-axes[1].set_xlabel("Life expectancy at birth (years)")
+# fig, axes = plt.subplots(1, 2, sharey=True, figsize=(15, 5))
+# axes[0] = sns.violinplot(ax=axes[0], x=df.GDP, y=df.Country, color="black")
+# axes[0] = sns.swarmplot(ax=axes[0], x=df.GDP, y=df.Country)
+# axes[0].set_xlabel("GDP in Trillions of U.S. Dollars")
+# axes[1] = sns.violinplot(ax=axes[1], x=df.LEABY, y=df.Country, color="black")
+# axes[1] = sns.swarmplot(ax=axes[1], x=df.LEABY, y=df.Country)
+# axes[1].set_xlabel("Life expectancy at birth (years)")
 # plt.show()
 
 # GDP and LEABY over the years through line charts
-plt.figure(figsize=(8, 6))
-sns.lineplot(x=df.Year, y=df.GDP, hue=df.Country)
-plt.legend(loc='center left', bbox_to_anchor=(1, 0.5), ncol=1)
-plt.ylabel("GDP in Trillions of U.S. Dollars")
+# plt.figure(figsize=(8, 6))
+# sns.lineplot(x=df.Year, y=df.GDP, hue=df.Country)
+# plt.legend(loc='center left', bbox_to_anchor=(1, 0.5), ncol=1)
+# plt.ylabel("GDP in Trillions of U.S. Dollars")
 # plt.show()
 # US and China have seen substantial gains between 2000-2015
 # The rest of the countries did not see increases in this magnitude.
 
 # But I want to separate each country and place them on a different faceted plots which makes it easier to compare
 # the shape of their GDP over the years without the same scale.
-graphGDP = sns.FacetGrid(df, col="Country", col_wrap=3, hue="Country", sharey=False)
-graphGDP = (graphGDP.map(sns.lineplot, "Year", "GDP").add_legend()
-            .set_axis_labels("Year", "GDP in Trillions of U.S. Dollars"))
+# graphGDP = sns.FacetGrid(df, col="Country", col_wrap=3, hue="Country", sharey=False)
+# graphGDP = (graphGDP.map(sns.lineplot, "Year", "GDP").add_legend()
+#             .set_axis_labels("Year", "GDP in Trillions of U.S. Dollars"))
 # plt.show()
 
 # OK, now is Life Expectancy
-plt.figure(figsize=(8, 6))
-sns.lineplot(x=df.Year, y=df.LEABY, hue=df.Country)
-plt.legend(loc='center left', bbox_to_anchor=(1, 0.5), ncol=1)
-plt.ylabel("Life expectancy at birth (years)")
+# plt.figure(figsize=(8, 6))
+# sns.lineplot(x=df.Year, y=df.LEABY, hue=df.Country)
+# plt.legend(loc='center left', bbox_to_anchor=(1, 0.5), ncol=1)
+# plt.ylabel("Life expectancy at birth (years)")
 # plt.show()
 # Zimbabwe has seen the greatest increase after a bit of a dip around 2004 and rest of all countries
 # has been increasing their life expectancy.
 
 # Separate each country again.
-graphLEABY = sns.FacetGrid(df, col="Country", col_wrap=3, hue="Country", sharey=False)
-graphLEABY = (graphLEABY.map(sns.lineplot, "Year", "LEABY").add_legend()
-              .set_axis_labels("Year", "Life expectancy at birth (years)"))
-plt.show()
+# graphLEABY = sns.FacetGrid(df, col="Country", col_wrap=3, hue="Country", sharey=False)
+# graphLEABY = (graphLEABY.map(sns.lineplot, "Year", "LEABY").add_legend()
+#               .set_axis_labels("Year", "Life expectancy at birth (years)"))
+# plt.show()
 # Now life expectancy seems more clear.
 
+# Let's explore the relationship between GDP and LEABY.
+sns.scatterplot(x=df.LEABY, y=df.GDP, hue=df.Country).legend(loc='center left', bbox_to_anchor=(1, 0.5), ncol=1)
+# plt.show()
+
+# Make it more readable.
+graph = sns.FacetGrid(df, col="Country", col_wrap=3, hue="Country", sharey=False, sharex=False)
+graph = (graph.map(sns.scatterplot, "LEABY", "GDP").add_legend()
+         .set_axis_labels("Life expectancy at birth (years)", "GDP in Trillions of U.S. Dollars"))
+plt.show()
+# Like the previous plots, countries are broken out into each scatter plot by facets. Looking at the individual
+# countries, most countries like the US, Mexico and Zimbabwe have linear relationships between GDP and life expectancy.
+# China on the other hand has a slightly exponential curve, and Chile's looks a bit logarithmic. In general though
+# one can see an increase in GDP and life expectancy, exhibiting a positive correlation.
+
+
+"""The project answers some of the questions:
+
+Has life expectancy increased over time in the six nations?
+ - Yes with Zimbabwe having the greatest increase.
+Has GDP increased over time in the six nations?
+ - GDP has also increased for all countries in our list, especially for China.
+Is there a correlation between GDP and life expectancy of a country?
+ - Yes there is a positive correlation between GDP and life expectancy for countries in our list.
+What is the average life expectancy in these nations?
+ - Average life expectancy was between mid to high 70s for the countries except for Zimbabwe which was 50.
+What is the distribution of that life expectancy?
+ - The life expectancy had a left skew, or most of the observations were on the right side."""
